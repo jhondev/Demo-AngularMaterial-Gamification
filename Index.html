@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
+    <style>
+        md-progress-linear .md-container,
+        md-progress-linear .md-container .md-bar {
+            height: 45px
+        }
+        md-progress-linear .md-container .md-bar2 {
+            transition: transform 1.5s linear;
+        }
+    </style>
+</head>
+
+<body ng-app="app">
+    <div ng-controller="AppCtrl as vm" layout="column" style="height:100%" ng-cloak>
+
+        <section layout="row" flex>
+
+            <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+
+                <md-toolbar class="md-theme-indigo">
+                    <h1 class="md-toolbar-tools">Sidenav Left</h1>
+                </md-toolbar>
+                <md-content layout-padding>
+                    <p hide show-gt-md>
+                        This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
+                    </p>
+                </md-content>
+
+            </md-sidenav>
+
+            <md-content flex layout-padding>
+
+                <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                    <md-button class="md-fab" aria-label="Eat cake">
+                        <md-icon>cake</md-icon>
+                    </md-button>
+
+                    <md-button class="md-fab md-primary" aria-label="Use Android">
+                        <md-icon>android</md-icon>
+                    </md-button>
+
+                    <md-button class="md-fab" ng-disabled="true" aria-label="Comment">
+                        <md-icon>ic_comment</md-icon>
+                    </md-button>
+
+                    <md-button class="md-fab md-primary md-hue-2" aria-label="Profile">
+                        <md-icon>ic_people</md-icon>
+                    </md-button>
+
+                    <md-button class="md-fab md-mini" aria-label="Eat cake">
+                        <md-icon>cake</md-icon>
+                    </md-button>
+
+                    <div class="label">FAB</div>
+                </section>
+
+                <section>
+                    <md-progress-linear md-mode="determinate" value="{{vm.determinateValue}}">
+                    </md-progress-linear>
+                </section>
+
+            </md-content>
+
+        </section>
+    </div>
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+    <!-- Your application bootstrap  -->
+    <script type="text/javascript">    
+    
+    angular.module('app', ['ngMaterial'])
+
+    angular
+  .module('app', ['ngMaterial'])
+  .controller('AppCtrl', [
+      '$timeout', 
+      '$interval', 
+      '$mdSidenav',
+      AppCtrl])
+
+  function AppCtrl ($timeout, $interval, $mdSidenav) {
+    var vm = this
+
+    vm.determinateValue = 0
+    $timeout(function() {
+        vm.determinateValue = 70        
+     }, 100)   
+  }
+
+  </script>
+
+
+</body>
+
+</html>
