@@ -11,8 +11,10 @@
     <style>
         md-progress-linear .md-container,
         md-progress-linear .md-container .md-bar {
-            height: 45px
+            height: 20px;
+            border-radius: 20px;
         }
+        
         md-progress-linear .md-container .md-bar2 {
             transition: transform 1.5s linear;
         }
@@ -39,6 +41,11 @@
 
             <md-content flex layout-padding>
 
+                <section>
+                    <md-progress-linear md-mode="determinate" value="{{vm.determinateValue}}">
+                    </md-progress-linear>
+                </section>
+
                 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                     <md-button class="md-fab" aria-label="Eat cake">
                         <md-icon>cake</md-icon>
@@ -63,10 +70,7 @@
                     <div class="label">FAB</div>
                 </section>
 
-                <section>
-                    <md-progress-linear md-mode="determinate" value="{{vm.determinateValue}}">
-                    </md-progress-linear>
-                </section>
+
 
             </md-content>
 
